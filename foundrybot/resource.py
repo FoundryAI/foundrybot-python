@@ -12,29 +12,29 @@ class Resource:
         if self.secret_key is None:
             raise FoundrybotError('Missing required "secretKey".', 'authentication_error')
 
-    def make_request(self, requestConfig):
+    def make_request(self, request_config):
         """
         Abstracted request method, request config is defined in the resource itself
-        :param requestConfig:
+        :param request_config:
         :return:
         """
         session = Session()
         req = Request(
-            requestConfig.method,
-            'https://api.foundrybot.com/v1' + self.build_url(requestConfig),
+            request_config.method,
+            'https://api.foundrybot.com/v1' + self.build_url(request_config),
             auth=(self.secret_key, ''),
-            data=requestConfig.data,
-            params=requestConfig.query
+            data=request_config.data,
+            params=request_config.query
         )
         prepared = req.prepare()
         prepared.headers['User-Agent'] = 'Foundrybot python v1.0.0 +(https://github.com/FoundryAI/foundrybot-python#readme)'
         return session.send(prepared).json()
 
-    def build_url(requestConfig):
+    def build_url(request_config):
         """
         Build the url path string
         :return url:
         """
-        url = requestConfig.url
-        map_keys(requestConfig.params, lambda value, key: url.replace('{' + key + '}', value))
+        url = request_config.url
+        map_keys(request_config.params, lambda value, key: url.replace('{' + key + '}', value))
         return url

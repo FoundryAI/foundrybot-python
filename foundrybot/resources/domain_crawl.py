@@ -8,11 +8,12 @@ class DomainCrawlResource(Resource):
         self.resource_name = 'DomainCrawl'
 
     def get(self, id):
-        return self.make_request({
+        res = self.make_request({
             'method': 'GET',
             'params': {'id': id},
             'url': '/domain-crawls/{id}'
         })
+        return res.doc
 
     def search(self, params):
         return self.make_request({
@@ -22,8 +23,9 @@ class DomainCrawlResource(Resource):
         })
 
     def create(self, params):
-        return self.make_request({
+        res = self.make_request({
             'method': 'POST',
             'data': pick(params, 'url', 'maxUrls', 'maxAge'),
             'url': '/domain-crawls'
         })
+        return res.doc
