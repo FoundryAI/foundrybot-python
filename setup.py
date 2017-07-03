@@ -10,4 +10,8 @@ setup(
   download_url = 'https://github.com/FoundryAI/foundrybot-python/archive/1.0.tar.gz',
   keywords = ['foundrybot', 'foundry.ai', 'foundrydc'], # arbitrary keywords
   classifiers = [],
+  install_requires=[
+    'requests',
+    'pydash'
+  ]
 )
