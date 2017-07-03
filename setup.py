@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 setup(
   name = 'foundrybot',
   packages = ['foundrybot'], # this must be the same as the name above
