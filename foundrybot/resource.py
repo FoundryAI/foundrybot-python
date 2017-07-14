@@ -30,11 +30,13 @@ class Resource:
         prepared.headers['User-Agent'] = 'Foundrybot python v1.0.0 +(https://github.com/FoundryAI/foundrybot-python#readme)'
         return session.send(prepared).json()
 
-    def build_url(request_config):
+    def build_url(self, request_config):
         """
         Build the url path string
         :return url:
         """
-        url = request_config.url
-        map_keys(request_config.params, lambda value, key: url.replace('{' + key + '}', value))
+        url = request_config.get('url')
+        params = request_config.get('params')
+        if params is not None:
+            url = url.format(**params)
         return url

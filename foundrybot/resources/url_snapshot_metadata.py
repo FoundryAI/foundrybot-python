@@ -7,9 +7,9 @@ class UrlSnapshotMetadataResource(Resource):
         super(secret_key)
         self.resource_name = 'UrlSnapshotMetadata'
 
-    def search(self, params):
+    def list(self, params):
         return self.make_request({
             'method': 'GET',
-            'data': pick(params, 'limit', 'offset', 'name', 'content', 'urlSnapshotId', 'domainCrawlId'),
+            'query': pick(params, 'limit', 'offset', 'name', 'content', 'urlSnapshotId', 'domainCrawlId'),
             'url': '/url-snapshot-metadata'
         })

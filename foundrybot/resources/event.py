@@ -15,10 +15,10 @@ class EventResource(Resource):
         })
         return res.doc
 
-    def search(self, params):
+    def list(self, params):
         res = self.make_request({
             'method': 'GET',
-            'params': pick(params, 'limit', 'offset', 'url'),
+            'query': pick(params, 'limit', 'offset', 'url'),
             'url': '/events'
         })
         return res

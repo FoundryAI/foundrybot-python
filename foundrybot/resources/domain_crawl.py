@@ -15,10 +15,10 @@ class DomainCrawlResource(Resource):
         })
         return res.doc
 
-    def search(self, params):
+    def list(self, params):
         return self.make_request({
             'method': 'GET',
-            'params': pick(params, 'limit', 'offset', 'url'),
+            'query': pick(params, 'limit', 'offset', 'url'),
             'url': '/domain-crawls'
         })
 

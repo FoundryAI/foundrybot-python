@@ -7,9 +7,9 @@ class UrlSnapshotTagResource(Resource):
         super(secret_key)
         self.resource_name = 'UrlSnapshotTag'
 
-    def search(self, params):
+    def list(self, params):
         return self.make_request({
             'method': 'GET',
-            'data': pick(params, 'limit', 'offset', 'tag', 'urlSnapshotId', 'domainCrawlId'),
+            'query': pick(params, 'limit', 'offset', 'tag', 'urlSnapshotId', 'domainCrawlId'),
             'url': '/url-snapshot-tags'
         })

@@ -7,9 +7,9 @@ class UrlSnapshotContentResource(Resource):
         super(secret_key)
         self.resource_name = 'UrlSnapshotContent'
 
-    def search(self, params):
+    def list(self, params):
         return self.make_request({
             'method': 'GET',
-            'data': pick(params, 'limit', 'offset', 'query', 'urlSnapshotContentId', 'urlSnapshotId', 'domainCrawlId'),
+            'query': pick(params, 'limit', 'offset', 'query', 'urlSnapshotContentId', 'urlSnapshotId', 'domainCrawlId'),
             'url': '/url-snapshot-contents'
         })

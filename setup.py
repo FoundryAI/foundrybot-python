@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 setup(
   name = 'foundrybot',
-  packages = ['foundrybot'], # this must be the same as the name above
-  version = '1.0',
+  packages = ['foundrybot', 'foundrybot/resources'], # this must be the same as the name above
+  version = '1.1',
   description = 'Foundrybot python bindings',
   author = 'Nick Gerner',
   author_email = 'nick@foundry.ai',
